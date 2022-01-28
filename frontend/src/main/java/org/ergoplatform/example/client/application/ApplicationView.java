@@ -37,9 +37,6 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
     @UiField
     MaterialContainer container;
 
-    @UiField
-    MaterialButton btnAdd;
-
     @Inject
     ApplicationView(Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
@@ -53,8 +50,4 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
         Document.get().getElementById("splashscreen").removeFromParent();
     }
 
-    @UiHandler("btnAdd")
-    void onAdd(ClickEvent e) {
-        MaterialToast.fireToast("I love GMD");
-    }
 }

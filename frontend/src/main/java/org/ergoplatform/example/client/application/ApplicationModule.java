@@ -20,7 +20,7 @@
 package org.ergoplatform.example.client.application;
 
 import org.ergoplatform.example.client.application.home.HomeModule;
-import org.ergoplatform.example.client.application.profile.ProfileModule;
+import org.ergoplatform.example.client.application.minting.MintingModule;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
 public class ApplicationModule extends AbstractPresenterModule {
@@ -28,7 +28,7 @@ public class ApplicationModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
         install(new HomeModule());
-        install(new ProfileModule());
+        install(new MintingModule());
 
         bindPresenter(ApplicationPresenter.class, ApplicationPresenter.MyView.class, ApplicationView.class,
                 ApplicationPresenter.MyProxy.class);

@@ -29,6 +29,8 @@
     <source path='client'/>
     <source path='shared'/>
 
+    <inherits name='org.realityforge.gwt.qr_code.QrCode'/>
+
     <!--GWT Material-->
     <inherits name="gwt.material.design.GwtMaterialBasicWithJQuery"/>
     <inherits name="gwt.material.design.addins.GwtMaterialAddins"/>

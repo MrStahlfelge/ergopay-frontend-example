@@ -18,7 +18,7 @@ allprojects {
     }
 }
 
-project(':gwt') {
+project(':frontend') {
     apply plugin: 'war'
     apply plugin: 'gwt'
 
@@ -33,9 +33,8 @@ project(':gwt') {
         implementation('com.github.gwtmaterialdesign:gwt-material:2.5.0')
         implementation('com.github.gwtmaterialdesign:gwt-material-themes:2.5.0')
         implementation('com.github.gwtmaterialdesign:gwt-material-addins:2.5.0')
-
-
         implementation 'com.gwtplatform:gwtp-mvp-client:1.6'
+        implementation 'org.realityforge.gwt.qr_code:gwt-qr-code:0.03'
         gwt 'com.google.gwt.inject:gin:2.1.2'
 
         testCompile 'junit:junit:4.13.1'

@@ -17,31 +17,26 @@
   limitations under the License.
   #L%
   -->
-<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-             xmlns:g='urn:import:com.google.gwt.user.client.ui'
-             xmlns:m="urn:import:gwt.material.design.client.ui">
+<ui:UiBinder xmlns:g='urn:import:com.google.gwt.user.client.ui'
+    xmlns:m="urn:import:gwt.material.design.client.ui"
+    xmlns:ui='urn:ui:com.google.gwt.uibinder'>
 
     <m:MaterialPanel>
         <m:MaterialHeader>
-            <m:MaterialNavBar ui:field="navBar" activates="sidenav" backgroundColor="INDIGO">
-                <m:MaterialNavBrand fontSize="1.2em" text="GmdTest" />
-                <m:MaterialNavSection float="RIGHT" hideOn="NONE">
-                    <m:MaterialDarkModeToggle/>
-                    <m:MaterialLink text="Link 1"/>
-                    <m:MaterialLink iconType="POLYMER" />
+            <m:MaterialNavBar activates="sidenav" backgroundColor="INDIGO" ui:field="navBar">
+                <m:MaterialNavBrand fontSize="1.2em" text="ErgoPay Showcase" />
+                <m:MaterialNavSection float="RIGHT" hideOn="NONE" paddingRight="20">
+                    <m:MaterialDarkModeToggle />
                 </m:MaterialNavSection>
             </m:MaterialNavBar>
         </m:MaterialHeader>
 
-        <m:MaterialSideNavPush m:id="sidenav" width="280">
-            <m:MaterialLink text="Home" href="#"/>
-            <m:MaterialLink text="Settings" href="#profile"/>
+        <m:MaterialSideNavPush width="280" m:id="sidenav">
+            <m:MaterialLink href="#" text="Home" />
+            <m:MaterialLink href="#mint-token" text="Mint a token" />
         </m:MaterialSideNavPush>
 
         <m:MaterialContainer ui:field="container" />
 
-        <m:MaterialFAB>
-            <m:MaterialButton ui:field="btnAdd" iconType="ADD" type="FLOATING" size="LARGE" backgroundColor="PINK"/>
-        </m:MaterialFAB>
     </m:MaterialPanel>
 </ui:UiBinder>

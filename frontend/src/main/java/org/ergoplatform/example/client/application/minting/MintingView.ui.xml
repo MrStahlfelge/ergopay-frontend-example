@@ -1,0 +1,51 @@
+<!--
+  #%L
+  GwtMaterial
+  %%
+  Copyright (C) 2015 - 2017 GwtMaterialDesign
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #L%
+  -->
+<ui:UiBinder xmlns:g='urn:import:com.google.gwt.user.client.ui'
+    xmlns:m='urn:import:gwt.material.design.client.ui'
+    xmlns:m.html='urn:import:gwt.material.design.client.ui.html'
+    xmlns:ui='urn:ui:com.google.gwt.uibinder'>
+
+    <m:MaterialPanel>
+
+        <m:MaterialPanel addStyleNames="valign-wrapper" height="100vh" textAlign="CENTER">
+            <m:MaterialRow>
+                <m:MaterialColumn grid="s12" padding="12" textAlign="CENTER">
+                    <m:MaterialLabel fontSize="2em" text="Mint a token" />
+                    <m:MaterialLabel text="Fill the input fields to specify the token properties" />
+                </m:MaterialColumn>
+                <m:MaterialTextBox clearOnKeyUp="true" grid="s12" label="Token name" required="true"
+                    ui:field="tokenName" />
+                <m:MaterialLongBox clearOnKeyUp="true" grid="s6" label="Number of token to issue"
+                    required="true" ui:field="tokenNum" />
+                <m:MaterialIntegerBox grid="s6" label="Decimal places" ui:field="tokenDecimals" />
+                <m:MaterialButton backgroundColor="WHITE" enabled="false" margin="8"
+                    text="Open wallet app" textColor="BLACK" waves="DEFAULT"
+                    ui:field="mintTokenButton" />
+                <m:MaterialLabel text="or scan with your mobile device:" />
+                <m:MaterialColumn grid="s12" padding="12">
+                <g:HTMLPanel>
+                    <m.html:Div height="200px" width="200px" ui:field="qrcode" />
+                </g:HTMLPanel>
+                </m:MaterialColumn>
+
+            </m:MaterialRow>
+        </m:MaterialPanel>
+    </m:MaterialPanel>
+</ui:UiBinder>

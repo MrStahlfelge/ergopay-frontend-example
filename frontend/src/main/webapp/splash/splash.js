@@ -8,7 +8,7 @@ image.src = "https://gwtmaterialdesign.github.io/gmd-core-demo/launcher-icons/la
 
 var title = document.createElement("span");
 title.className = "title";
-title.innerHTML = "ErgoPayExample";
+title.innerHTML = "ErgoPay Showcase";
 
 var description = document.createElement("span");
 description.className = "description";

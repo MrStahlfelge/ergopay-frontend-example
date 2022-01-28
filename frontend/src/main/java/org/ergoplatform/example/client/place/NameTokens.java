@@ -21,5 +21,5 @@ package org.ergoplatform.example.client.place;
 
 public class NameTokens {
     public static final String HOME = "/";
-    public static final String PROFILE = "profile";
+    public static final String MINT_TOKEN = "mint-token";
 }

@@ -198,6 +198,12 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.realityforge.gwt.qr_code</groupId>
+            <artifactId>gwt-qr-code</artifactId>
+            <version>0.03</version>
+        </dependency>
+
         <!-- JUnit -->
         <dependency>
             <groupId>junit</groupId>

@@ -17,20 +17,14 @@
  * limitations under the License.
  * #L%
  */
-package org.ergoplatform.example.client.application.profile;
+package org.ergoplatform.example.client.application.minting;
 
-import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewImpl;
+import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-import javax.inject.Inject;
-
-public class ProfileView extends ViewImpl implements ProfilePresenter.MyView {
-    interface Binder extends UiBinder<Widget, ProfileView> {
-    }
-
-    @Inject
-    ProfileView(Binder uiBinder) {
-        initWidget(uiBinder.createAndBindUi(this));
+public class MintingModule extends AbstractPresenterModule {
+    @Override
+    protected void configure() {
+        bindPresenter(MintingPresenter.class, MintingPresenter.MyView.class, MintingView.class,
+                MintingPresenter.MyProxy.class);
     }
 }

@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.ergoplatform.example.client.application.profile;
+package org.ergoplatform.example.client.application.minting;
 
 import org.ergoplatform.example.client.application.ApplicationPresenter;
 import org.ergoplatform.example.client.place.NameTokens;
@@ -29,17 +29,17 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
-public class ProfilePresenter extends Presenter<ProfilePresenter.MyView, ProfilePresenter.MyProxy> {
+public class MintingPresenter extends Presenter<MintingPresenter.MyView, MintingPresenter.MyProxy> {
     interface MyView extends View {
     }
 
     @ProxyStandard
-    @NameToken(NameTokens.PROFILE)
-    interface MyProxy extends ProxyPlace<ProfilePresenter> {
+    @NameToken(NameTokens.MINT_TOKEN)
+    interface MyProxy extends ProxyPlace<MintingPresenter> {
     }
 
     @Inject
-    ProfilePresenter(
+    MintingPresenter(
             EventBus eventBus,
             MyView view,
             MyProxy proxy) {
