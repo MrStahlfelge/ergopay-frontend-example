@@ -1,0 +1,43 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath 'org.wisepersist:gwt-gradle-plugin:1.1.15'
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        google()
+        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+        maven { url "https://jitpack.io" }
+    }
+}
+
+project(':gwt') {
+    apply plugin: 'war'
+    apply plugin: 'gwt'
+
+    gwt {
+        gwtVersion = '2.8.2'
+        modules 'org.ergoplatform.example.example'
+        maxHeapSize = "1G" // Default 256m is not enough for gwt compiler. GWT is HUNGRY
+        minHeapSize = "1G"
+    }
+
+    dependencies {
+        implementation('com.github.gwtmaterialdesign:gwt-material:2.5.0')
+        implementation('com.github.gwtmaterialdesign:gwt-material-themes:2.5.0')
+        implementation('com.github.gwtmaterialdesign:gwt-material-addins:2.5.0')
+
+
+        implementation 'com.gwtplatform:gwtp-mvp-client:1.6'
+        gwt 'com.google.gwt.inject:gin:2.1.2'
+
+        testCompile 'junit:junit:4.13.1'
+    }
+}
