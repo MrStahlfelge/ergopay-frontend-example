@@ -23,7 +23,7 @@
 
     <m:MaterialPanel>
         <m:MaterialHeader>
-            <m:MaterialNavBar activates="sidenav" backgroundColor="INDIGO" ui:field="navBar">
+            <m:MaterialNavBar activates="sidenav" layoutPosition="FIXED" backgroundColor="INDIGO" ui:field="navBar">
                 <m:MaterialNavBrand fontSize="1.2em" text="ErgoPay Showcase" />
                 <m:MaterialNavSection float="RIGHT" hideOn="NONE" paddingRight="20">
                     <m:MaterialDarkModeToggle />
@@ -36,7 +36,7 @@
             <m:MaterialLink href="#mint-token" text="Mint a token" />
         </m:MaterialSideNavPush>
 
-        <m:MaterialContainer ui:field="container" />
+        <m:MaterialContainer paddingTop="64" ui:field="container" />
 
     </m:MaterialPanel>
 </ui:UiBinder>

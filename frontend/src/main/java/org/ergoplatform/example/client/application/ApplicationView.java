@@ -20,14 +20,20 @@
 package org.ergoplatform.example.client.application;
 
 import com.google.gwt.dom.client.Document;
-import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.http.client.Request;
+import com.google.gwt.http.client.RequestBuilder;
+import com.google.gwt.http.client.RequestCallback;
+import com.google.gwt.http.client.RequestException;
+import com.google.gwt.http.client.Response;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewImpl;
-import gwt.material.design.client.ui.*;
+
+import org.ergoplatform.example.client.gin.ClientModule;
+
+import gwt.material.design.client.ui.MaterialContainer;
 
 public class ApplicationView extends ViewImpl implements ApplicationPresenter.MyView {
 
@@ -41,6 +47,33 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
     ApplicationView(Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
         bindSlot(ApplicationPresenter.SLOT_MAIN, container);
+
+        if (ClientModule.BACKEND_URL.contains("heroku")) {
+            doUselessBackendCall();
+        }
+    }
+
+    public static void doUselessBackendCall() {
+        // Heroku hibernates our backend regularly and needs longer to come up than wallet apps
+        // time out. So we do a little trick here: we just wake the backend up with a useless call
+        // when someone opens this page
+        RequestBuilder builder = new RequestBuilder(RequestBuilder.GET,
+                ClientModule.BACKEND_URL.replace("ergopay:", "https:"));
+
+        try {
+            builder.sendRequest(null, new RequestCallback() {
+                public void onError(Request request, Throwable exception) {
+                    // ignore
+                }
+
+                public void onResponseReceived(Request request, Response response) {
+                    // ignore
+                }
+            });
+
+        } catch (RequestException e) {
+            // ignore
+        }
     }
 
     @Override

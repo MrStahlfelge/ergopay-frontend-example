@@ -27,8 +27,6 @@
 
             <m:MaterialRow>
                 <m:MaterialColumn grid="s12" padding="12" textAlign="CENTER">
-                    <m:MaterialImage alt="logo"
-                        url="https://gwtmaterialdesign.github.io/gmd-core-demo/launcher-icons/launcher1x.png" />
                     <m:MaterialLabel fontSize="2em" text="Welcome to ErgoPay Showcase" />
                     <m:MaterialLabel fontSize="1.5em"
                         text="Use panel on the left to choose the tool to use." />
@@ -37,9 +35,16 @@
                         </m.html:Span>
                     </g:HTMLPanel>
 
-                    <m:MaterialLink
+                    <m:MaterialLink paddingTop="20"
                         href="https://www.reddit.com/r/ergonauts/comments/sc9lbk/nautilus_wallet_public_beta_test/hu9v6dk/"
                         text="What is ErgoPay? (non-dev explanation)" />
+
+                    <m:MaterialLabel
+                        text="For developers:" />
+
+                    <m:MaterialLink
+                        href="https://github.com/ergoplatform/eips/blob/13e5760ccc6eb02c1c1982e78933343c3fe7544d/eip-0020.md"
+                        text="ErgoPay EIP" />
                 </m:MaterialColumn>
             </m:MaterialRow>
 
