@@ -26,16 +26,22 @@
 
         <m:MaterialPanel textAlign="CENTER">
             <m:MaterialRow>
-                <m:MaterialColumn grid="s12" padding="12" textAlign="CENTER">
+                <m:MaterialColumn padding="12" textAlign="CENTER">
                     <m:MaterialLabel fontSize="2em" text="Mint a token" />
                     <m:MaterialLabel text="Fill the input fields to specify the token properties" />
                 </m:MaterialColumn>
-                <m:MaterialTextBox clearOnKeyUp="true" grid="s12" label="Token name" required="true"
-                    ui:field="tokenName" />
-                <m:MaterialLongBox clearOnKeyUp="true" grid="s12 m6"
-                    label="Number of token to issue" required="true" ui:field="tokenNum" />
-                <m:MaterialIntegerBox grid="s12 m6" label="Decimal places"
+            </m:MaterialRow>
+            <m:MaterialRow>
+                <m:MaterialTextBox clearOnKeyUp="true" grid="s12 m10 l6" label="Token name"
+                    offset="m1 l3" required="true" ui:field="tokenName" />
+            </m:MaterialRow>
+            <m:MaterialRow>
+                <m:MaterialLongBox clearOnKeyUp="true" grid="s12 m5 l3" label="Number of token to issue"
+                    offset="m1 l3" required="true" ui:field="tokenNum" />
+                <m:MaterialIntegerBox grid="s12 m5 l3" label="Decimal places"
                     ui:field="tokenDecimals" />
+            </m:MaterialRow>
+            <m:MaterialRow>
                 <m:MaterialButton backgroundColor="WHITE" enabled="false" margin="8"
                     text="Open wallet app" textColor="BLACK" waves="DEFAULT"
                     ui:field="mintTokenButton" />
@@ -45,8 +51,10 @@
                         <m.html:Div height="200px" width="200px" ui:field="qrcode" />
                     </g:HTMLPanel>
                 </m:MaterialColumn>
+            </m:MaterialRow>
+            <m:MaterialRow>
                 <m:MaterialLabel fontSize="1.2em" text="What's shown here?" />
-                <m:MaterialLabel grid="s12 m6" offset="m3" text="This example demonstrates a dynamic ErgoPay link.
+                <m:MaterialLabel grid="s12 m10 l6" offset="m1 l3" text="This example demonstrates a dynamic ErgoPay link.
                 This site constructs a link holding the information you gave. Your wallet app uses this link
                 to request the transaction data from the dApp backend, adding your p2pk address data.
                 The wallet backend builds a transaction to mint the specified token, and you can confirm to sign it." />
