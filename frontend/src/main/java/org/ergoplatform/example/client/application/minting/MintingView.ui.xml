@@ -26,18 +26,17 @@
 
         <m:MaterialPanel textAlign="CENTER">
             <m:MaterialRow>
-                <m:MaterialColumn padding="12" textAlign="CENTER">
-                    <m:MaterialLabel fontSize="2em" text="Mint a token" />
-                    <m:MaterialLabel text="Fill the input fields to specify the token properties" />
-                </m:MaterialColumn>
+                <m:MaterialLabel fontSize="2em" text="Mint a token" />
+                <m:MaterialLabel text="Fill the input fields to specify the token properties" />
             </m:MaterialRow>
             <m:MaterialRow>
                 <m:MaterialTextBox clearOnKeyUp="true" grid="s12 m10 l6" label="Token name"
                     offset="m1 l3" required="true" ui:field="tokenName" />
             </m:MaterialRow>
             <m:MaterialRow>
-                <m:MaterialLongBox clearOnKeyUp="true" grid="s12 m5 l3" label="Number of token to issue"
-                    offset="m1 l3" required="true" ui:field="tokenNum" />
+                <m:MaterialLongBox clearOnKeyUp="true" grid="s12 m5 l3"
+                    label="Number of token to issue" offset="m1 l3" required="true"
+                    ui:field="tokenNum" />
                 <m:MaterialIntegerBox grid="s12 m5 l3" label="Decimal places"
                     ui:field="tokenDecimals" />
             </m:MaterialRow>
