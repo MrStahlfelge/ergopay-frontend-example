@@ -34,6 +34,7 @@
         <m:MaterialSideNavPush width="280" m:id="sidenav">
             <m:MaterialLink href="#" text="Home" />
             <m:MaterialLink href="#mint-token" text="Mint a token" />
+            <m:MaterialLink href="#burn-token" text="Burn a token" />
         </m:MaterialSideNavPush>
 
         <m:MaterialContainer paddingTop="64" ui:field="container" />

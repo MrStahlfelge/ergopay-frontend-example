@@ -17,10 +17,21 @@
  * limitations under the License.
  * #L%
  */
-package org.ergoplatform.example.client.place;
+package org.ergoplatform.example.client.application.burning;
 
-public class NameTokens {
-    public static final String HOME = "/";
-    public static final String MINT_TOKEN = "mint-token";
-    public static final String BURN_TOKEN = "burn-token";
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.user.client.ui.Widget;
+import com.gwtplatform.mvp.client.ViewImpl;
+
+import javax.inject.Inject;
+
+public class BurningView extends ViewImpl implements BurningPresenter.MyView {
+
+    interface Binder extends UiBinder<Widget, BurningView> {
+    }
+
+    @Inject
+    BurningView(Binder uiBinder) {
+        initWidget(uiBinder.createAndBindUi(this));
+    }
 }

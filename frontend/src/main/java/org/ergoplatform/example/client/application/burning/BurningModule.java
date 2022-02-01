@@ -17,10 +17,15 @@
  * limitations under the License.
  * #L%
  */
-package org.ergoplatform.example.client.place;
+package org.ergoplatform.example.client.application.burning;
 
-public class NameTokens {
-    public static final String HOME = "/";
-    public static final String MINT_TOKEN = "mint-token";
-    public static final String BURN_TOKEN = "burn-token";
+import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
+
+public class BurningModule extends AbstractPresenterModule {
+
+    @Override
+    protected void configure() {
+        bindPresenter(BurningPresenter.class, BurningPresenter.MyView.class, BurningView.class,
+                BurningPresenter.MyProxy.class);
+    }
 }

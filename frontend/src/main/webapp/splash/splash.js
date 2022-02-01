@@ -12,7 +12,7 @@ title.innerHTML = "ErgoPay Showcase";
 
 var description = document.createElement("span");
 description.className = "description";
-description.innerHTML = "Some description";
+description.innerHTML = "A non-web extension wallet dApp connector";
 
 var progress = document.createElement("div");
 progress.className = "progress";
