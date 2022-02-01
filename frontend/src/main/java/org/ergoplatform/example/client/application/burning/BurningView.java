@@ -80,6 +80,13 @@ public class BurningView extends ViewImpl implements BurningPresenter.MyView {
         MaterialToast.fireToast("Wallet app opened (if installed)");
     }
 
+    @UiHandler("changeWalletButton")
+    void changeWalletButtonClicked(ClickEvent e) {
+        p2pkAddress = null;
+        UserSession.resetSessionId();
+        onAttach();
+    }
+
     @UiHandler("burnTokenButton")
     void burnTokenButtonClicked(ClickEvent e) {
         String url = getErgoPayUrl();

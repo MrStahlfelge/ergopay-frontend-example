@@ -58,22 +58,31 @@
         </m:MaterialPanel>
 
         <m:MaterialPanel display="NONE" textAlign="CENTER" ui:field="layoutWallet">
-            <m:MaterialRow>
-                <m:MaterialLabel fontSize="1.2em" text="Connected wallet address:" />
-                <m:MaterialLabel fontSize="1.5em" truncate="true" ui:field="walletAddress" />
+            <m:MaterialRow paddingLeft="20" paddingRight="20">
+                <m:MaterialCard>
+                    <m:MaterialCardContent textColor="BLACK">
+                        <m:MaterialLabel fontSize="1.2em" text="Connected wallet address:" />
+                        <m:MaterialLabel fontSize="1.5em" truncate="true"
+                            ui:field="walletAddress" />
+                    </m:MaterialCardContent>
+                    <m:MaterialCardAction padding="0">
+                        <m:MaterialButton text="Change" textColor="BLUE" type="FLAT"
+                            ui:field="changeWalletButton" />
+                    </m:MaterialCardAction>
+                </m:MaterialCard>
             </m:MaterialRow>
             <m:MaterialRow>
                 <m:MaterialListValueBox emptyPlaceHolder="Select token to burn" grid="s12 m10 l6"
                     offset="m1 l3" ui:field="listTokens" />
             </m:MaterialRow>
             <m:MaterialRow>
-                <m:MaterialLongBox clearOnKeyUp="true" grid="s12 m10 l6" label="Raw number of tokens to burn"
-                    offset="m1 l3" required="true" ui:field="tokenNum" />
+                <m:MaterialLongBox clearOnKeyUp="true" grid="s12 m10 l6"
+                    label="Raw number of tokens to burn" offset="m1 l3" required="true"
+                    ui:field="tokenNum" />
             </m:MaterialRow>
             <m:MaterialRow>
-                <m:MaterialButton backgroundColor="WHITE" margin="8"
-                    text="Open wallet app" textColor="BLACK" waves="DEFAULT"
-                    ui:field="burnTokenButton" />
+                <m:MaterialButton backgroundColor="WHITE" margin="8" text="Open wallet app"
+                    textColor="BLACK" waves="DEFAULT" ui:field="burnTokenButton" />
                 <m:MaterialLabel text="or scan with your mobile device:" />
                 <m:MaterialColumn grid="s12" padding="12">
                     <g:HTMLPanel>

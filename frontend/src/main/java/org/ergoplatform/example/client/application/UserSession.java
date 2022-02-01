@@ -27,6 +27,12 @@ public class UserSession {
         return sessionId;
     }
 
+    public static void resetSessionId() {
+        if (LOCAL_STORAGE != null) {
+            LOCAL_STORAGE.removeItem(KEY_SESSION_ID);
+        }
+    }
+
     public static void fetchAddressFromBackend(Function<String, Void> callback) {
 
         RequestBuilder builder = new RequestBuilder(RequestBuilder.GET,
