@@ -23,4 +23,5 @@ public class NameTokens {
     public static final String HOME = "/";
     public static final String MINT_TOKEN = "mint-token";
     public static final String BURN_TOKEN = "burn-token";
+    public static final String SPEND_TOKEN = "spend-box";
 }

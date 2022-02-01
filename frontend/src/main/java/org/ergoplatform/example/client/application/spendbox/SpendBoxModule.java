@@ -17,25 +17,18 @@
  * limitations under the License.
  * #L%
  */
-package org.ergoplatform.example.client.application;
-
-import org.ergoplatform.example.client.application.burning.BurningModule;
-import org.ergoplatform.example.client.application.home.HomeModule;
-import org.ergoplatform.example.client.application.minting.MintingModule;
-import org.ergoplatform.example.client.application.spendbox.SpendBoxModule;
+package org.ergoplatform.example.client.application.spendbox;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-public class ApplicationModule extends AbstractPresenterModule {
+import org.ergoplatform.example.client.application.home.HomePresenter;
+import org.ergoplatform.example.client.application.home.HomeView;
+
+public class SpendBoxModule extends AbstractPresenterModule {
 
     @Override
     protected void configure() {
-        install(new HomeModule());
-        install(new MintingModule());
-        install(new BurningModule());
-        install(new SpendBoxModule());
-
-        bindPresenter(ApplicationPresenter.class, ApplicationPresenter.MyView.class, ApplicationView.class,
-                ApplicationPresenter.MyProxy.class);
+        bindPresenter(SpendBoxPresenter.class, SpendBoxPresenter.MyView.class, SpendBoxView.class,
+                SpendBoxPresenter.MyProxy.class);
     }
 }

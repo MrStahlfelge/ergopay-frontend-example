@@ -35,6 +35,7 @@
             <m:MaterialLink href="#" text="Home" />
             <m:MaterialLink href="#mint-token" text="Mint a token" />
             <m:MaterialLink href="#burn-token" text="Burn a token" />
+            <m:MaterialLink href="#spend-box" text="Spend a box" />
         </m:MaterialSideNavPush>
 
         <m:MaterialContainer paddingTop="64" ui:field="container" />

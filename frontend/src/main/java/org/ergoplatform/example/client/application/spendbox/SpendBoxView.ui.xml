@@ -1,0 +1,56 @@
+<!--
+  #%L
+  GwtMaterial
+  %%
+  Copyright (C) 2015 - 2017 GwtMaterialDesign
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #L%
+  -->
+<ui:UiBinder xmlns:g='urn:import:com.google.gwt.user.client.ui'
+    xmlns:m='urn:import:gwt.material.design.client.ui'
+    xmlns:m.html='urn:import:gwt.material.design.client.ui.html'
+    xmlns:ui='urn:ui:com.google.gwt.uibinder'>
+
+    <m:MaterialPanel>
+
+        <m:MaterialPanel textAlign="CENTER">
+            <m:MaterialRow>
+                <m:MaterialLabel fontSize="2em" text="Spend a box" />
+                <m:MaterialLabel text="Enter a box id to generate a transaction spending the box" />
+            </m:MaterialRow>
+            <m:MaterialRow>
+                <m:MaterialTextBox clearOnKeyUp="true" grid="s12 m10 l6" label="Box ID"
+                    offset="m1 l3" required="true" ui:field="boxId" />
+            </m:MaterialRow>
+            <m:MaterialRow>
+                <m:MaterialButton backgroundColor="WHITE" margin="8" text="Open wallet app"
+                    textColor="BLACK" waves="DEFAULT" ui:field="spendBoxButton" />
+                <m:MaterialLabel text="or scan with your mobile device:" />
+                <m:MaterialColumn grid="s12" padding="12">
+                    <g:HTMLPanel>
+                        <m.html:Div height="200px" width="200px" ui:field="qrcode" />
+                    </g:HTMLPanel>
+                </m:MaterialColumn>
+            </m:MaterialRow>
+            <m:MaterialRow>
+                <m:MaterialLabel fontSize="1.2em" text="What's shown here?" />
+                <m:MaterialLabel grid="s12 m10 l6" offset="m1 l3" text="This example demonstrates a dynamic ErgoPay link.
+                This site constructs a link holding the information you gave. Your wallet app uses this link
+                to request the transaction data from the dApp backend.
+                The wallet backend builds a transaction to spend the specified box, and you can confirm to sign it." />
+
+            </m:MaterialRow>
+        </m:MaterialPanel>
+    </m:MaterialPanel>
+</ui:UiBinder>
