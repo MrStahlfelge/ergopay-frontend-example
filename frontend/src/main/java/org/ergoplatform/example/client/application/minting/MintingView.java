@@ -29,10 +29,8 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewImpl;
 
+import org.ergoplatform.example.client.application.QrCodeUtils;
 import org.ergoplatform.example.client.gin.ClientModule;
-import org.realityforge.gwt.qr_code.Ecc;
-import org.realityforge.gwt.qr_code.QrCode;
-import org.realityforge.gwt.qr_code.QrCodeTool;
 
 import javax.inject.Inject;
 
@@ -107,14 +105,6 @@ public class MintingView extends ViewImpl implements MintingPresenter.MyView {
         else
             tokenNum.clearErrorText();
 
-        if (allInputsValid) {
-            // Generate a simple text base url QR Code with High error correction
-            final QrCode qrCode = QrCodeTool.encodeText(getErgoPayUrl(), Ecc.HIGH);
-            this.qrcode.getElement().getStyle().setProperty("marginLeft", "auto");
-            this.qrcode.getElement().getStyle().setProperty("marginRight", "auto");
-            this.qrcode.getElement().setInnerHTML(qrCode.toSvgString(2));
-        } else {
-            this.qrcode.$this().html("");
-        }
+        QrCodeUtils.setQrCodeToDiv(this.qrcode, allInputsValid ? getErgoPayUrl() : null);
     }
 }

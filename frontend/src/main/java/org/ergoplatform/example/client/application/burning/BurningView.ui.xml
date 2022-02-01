@@ -27,18 +27,27 @@
         <m:MaterialPanel textAlign="CENTER">
             <m:MaterialRow>
                 <m:MaterialLabel fontSize="2em" text="Burn a token" />
+            </m:MaterialRow>
+            <m:MaterialRow visible="false" ui:field="layoutConnectWallet">
                 <m:MaterialLabel text="Connect your wallet to list available tokens" />
-                <m:MaterialButton backgroundColor="WHITE" enabled="false" margin="8"
-                    text="Open wallet app" textColor="BLACK" waves="DEFAULT"
-                    ui:field="burnTokenButton" />
+                <m:MaterialButton backgroundColor="WHITE" margin="8" text="Open wallet app"
+                    textColor="BLACK" waves="DEFAULT" ui:field="connectWalletButton" />
                 <m:MaterialLabel text="or scan with your mobile device:" />
                 <m:MaterialColumn grid="s12" padding="12">
                     <g:HTMLPanel>
-                        <m.html:Div height="200px" width="200px" ui:field="qrcode" />
+                        <m.html:Div height="200px" width="200px" ui:field="connectQrcode" />
                     </g:HTMLPanel>
                 </m:MaterialColumn>
+                <m:MaterialPreLoader>
+                    <m:MaterialSpinner />
+                </m:MaterialPreLoader>
+                <m:MaterialLabel text="Waiting for you to connect with ErgoPay..." />
             </m:MaterialRow>
-            <m:MaterialRow>
+            <m:MaterialRow display="NONE" ui:field="layoutWallet">
+                <m:MaterialLabel fontSize="1.2em" text="Connected wallet address:" />
+                <m:MaterialLabel fontSize="1.5em" truncate="true" ui:field="walletAddress" />
+            </m:MaterialRow>
+            <m:MaterialRow paddingTop="20">
                 <m:MaterialLabel fontSize="1.2em" text="What's shown here?" />
                 <m:MaterialLabel grid="s12 m10 l6" offset="m1 l3" text="This example demonstrates how ErgoPay can
                 be used to connect to a wallet address. After obtaining the address to use, the dApp can
