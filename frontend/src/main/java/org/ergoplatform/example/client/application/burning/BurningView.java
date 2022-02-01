@@ -19,8 +19,9 @@
  */
 package org.ergoplatform.example.client.application.burning;
 
-import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.KeyUpEvent;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -30,18 +31,23 @@ import com.gwtplatform.mvp.client.ViewImpl;
 
 import org.ergoplatform.example.client.application.QrCodeUtils;
 import org.ergoplatform.example.client.application.UserSession;
+import org.ergoplatform.example.client.application.ergoclient.ExplorerApiClient;
+import org.ergoplatform.example.client.gin.ClientModule;
 
 import javax.inject.Inject;
 
 import gwt.material.design.client.base.MaterialWidget;
 import gwt.material.design.client.constants.Display;
 import gwt.material.design.client.ui.MaterialLabel;
+import gwt.material.design.client.ui.MaterialListValueBox;
+import gwt.material.design.client.ui.MaterialLongBox;
 import gwt.material.design.client.ui.MaterialToast;
 import gwt.material.design.client.ui.html.Div;
 
 public class BurningView extends ViewImpl implements BurningPresenter.MyView {
 
     private boolean isAttached = false;
+    private String p2pkAddress = null;
 
     interface Binder extends UiBinder<Widget, BurningView> {
     }
@@ -56,6 +62,12 @@ public class BurningView extends ViewImpl implements BurningPresenter.MyView {
     MaterialWidget layoutStartBackend;
     @UiField
     MaterialLabel walletAddress;
+    @UiField
+    MaterialListValueBox<ExplorerApiClient.ErgoToken> listTokens;
+    @UiField
+    MaterialLongBox tokenNum;
+    @UiField
+    Div burnqrcode;
 
     @Inject
     BurningView(Binder uiBinder) {
@@ -68,6 +80,36 @@ public class BurningView extends ViewImpl implements BurningPresenter.MyView {
         MaterialToast.fireToast("Wallet app opened (if installed)");
     }
 
+    @UiHandler("burnTokenButton")
+    void burnTokenButtonClicked(ClickEvent e) {
+        String url = getErgoPayUrl();
+        if (url != null) {
+            com.google.gwt.user.client.Window.open(getErgoPayUrl(), "_blank", "");
+            MaterialToast.fireToast("Wallet app opened (if installed)");
+        } else {
+            MaterialToast.fireToast("Please select a token and enter a valid number to burn.");
+        }
+    }
+
+    @UiHandler("listTokens")
+    void onTokenSelectionChanged(ValueChangeEvent<ExplorerApiClient.ErgoToken> e) {
+        tokenNum.setValue((long) e.getValue().amount);
+        refreshBurnQrCode();
+    }
+
+    @UiHandler("tokenNum")
+    void onTokenNumChanged(ValueChangeEvent<Long> e) {
+        refreshBurnQrCode();
+    }
+
+    @UiHandler("tokenNum")
+    void onKeyEvent(KeyUpEvent e) {
+        refreshBurnQrCode();
+    }
+
+    private void refreshBurnQrCode() {
+        QrCodeUtils.setQrCodeToDiv(burnqrcode, getErgoPayUrl());
+    }
 
     @Override
     protected void onAttach() {
@@ -103,6 +145,11 @@ public class BurningView extends ViewImpl implements BurningPresenter.MyView {
                 // address not on backend
                 layoutStartBackend.setDisplay(Display.NONE);
                 layoutConnectWallet.setDisplay(Display.INITIAL);
+                layoutWallet.setDisplay(Display.NONE);
+            } else {
+                layoutStartBackend.setDisplay(Display.INITIAL);
+                layoutConnectWallet.setDisplay(Display.NONE);
+                layoutWallet.setDisplay(Display.NONE);
             }
 
             // retry after 3 seconds
@@ -121,6 +168,31 @@ public class BurningView extends ViewImpl implements BurningPresenter.MyView {
         layoutStartBackend.setDisplay(Display.NONE);
         layoutConnectWallet.setDisplay(Display.NONE);
         layoutWallet.setDisplay(Display.INITIAL);
+        this.p2pkAddress = address;
         walletAddress.setText(address);
+
+        // we have the address, retrieve token information for address
+        fetchTokensForAddress(address);
+    }
+
+    private void fetchTokensForAddress(String address) {
+        ExplorerApiClient.fetchTokensFromExplorer(address, ergoTokens -> {
+            if (ergoTokens != null) {
+                listTokens.clear();
+                for (ExplorerApiClient.ErgoToken token : ergoTokens) {
+                    listTokens.addItem(token, token.name + " (" + token.id.substring(0, 20) + "...)");
+                }
+            }
+
+            return null;
+        });
+    }
+
+    private String getErgoPayUrl() {
+        if (tokenNum.getValue() == null || tokenNum.getValue() <= 0L || listTokens.getValue() == null)
+            return null;
+        else
+            return ClientModule.ERGOPAY_URL + "burnToken/" + p2pkAddress + "/?num=" + tokenNum.getValue()
+                    + "&tokenId=" + listTokens.getValue().id;
     }
 }
