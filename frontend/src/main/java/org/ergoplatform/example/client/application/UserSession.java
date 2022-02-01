@@ -39,7 +39,7 @@ public class UserSession {
                 }
 
                 public void onResponseReceived(Request request, Response response) {
-                    callback.apply(response.getText());
+                    callback.apply(response.getStatusCode() > 0 && response.getStatusCode() < 400 ? response.getText() : null);
                 }
             });
 

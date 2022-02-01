@@ -53,6 +53,8 @@ public class BurningView extends ViewImpl implements BurningPresenter.MyView {
     @UiField
     MaterialWidget layoutWallet;
     @UiField
+    MaterialWidget layoutStartBackend;
+    @UiField
     MaterialLabel walletAddress;
 
     @Inject
@@ -95,8 +97,13 @@ public class BurningView extends ViewImpl implements BurningPresenter.MyView {
             onReceivedAddress(address);
         } else {
             // error or address not on backend
-            layoutConnectWallet.setDisplay(Display.INITIAL);
-            layoutConnectWallet.setVisibility(Style.Visibility.VISIBLE);
+
+            // if no error, switch to connect display
+            if (address != null) {
+                // address not on backend
+                layoutStartBackend.setDisplay(Display.NONE);
+                layoutConnectWallet.setDisplay(Display.INITIAL);
+            }
 
             // retry after 3 seconds
             Timer timer = new Timer() {
@@ -111,6 +118,7 @@ public class BurningView extends ViewImpl implements BurningPresenter.MyView {
     }
 
     private void onReceivedAddress(String address) {
+        layoutStartBackend.setDisplay(Display.NONE);
         layoutConnectWallet.setDisplay(Display.NONE);
         layoutWallet.setDisplay(Display.INITIAL);
         walletAddress.setText(address);

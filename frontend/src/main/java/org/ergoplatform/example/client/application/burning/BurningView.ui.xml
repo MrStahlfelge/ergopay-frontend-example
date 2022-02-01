@@ -28,7 +28,13 @@
             <m:MaterialRow>
                 <m:MaterialLabel fontSize="2em" text="Burn a token" />
             </m:MaterialRow>
-            <m:MaterialRow visible="false" ui:field="layoutConnectWallet">
+            <m:MaterialRow ui:field="layoutStartBackend">
+                <m:MaterialPreLoader>
+                    <m:MaterialSpinner />
+                </m:MaterialPreLoader>
+                <m:MaterialLabel text="Starting server process, may take a minute..." />
+            </m:MaterialRow>
+            <m:MaterialRow display="NONE" ui:field="layoutConnectWallet">
                 <m:MaterialLabel text="Connect your wallet to list available tokens" />
                 <m:MaterialButton backgroundColor="WHITE" margin="8" text="Open wallet app"
                     textColor="BLACK" waves="DEFAULT" ui:field="connectWalletButton" />
