@@ -34,13 +34,8 @@ import org.realityforge.gwt.qr_code.Ecc;
 import org.realityforge.gwt.qr_code.QrCode;
 import org.realityforge.gwt.qr_code.QrCodeTool;
 
-import java.net.URLEncoder;
-import java.nio.charset.Charset;
-
 import javax.inject.Inject;
 
-import elemental2.dom.DomGlobal;
-import elemental2.dom.Element;
 import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialIntegerBox;
 import gwt.material.design.client.ui.MaterialLongBox;
@@ -92,7 +87,7 @@ public class MintingView extends ViewImpl implements MintingPresenter.MyView {
     }
 
     private String getErgoPayUrl() {
-        return ClientModule.BACKEND_URL + "mintToken/#P2PK_ADDRESS#/?num=" + tokenNum.getValue()
+        return ClientModule.ERGOPAY_URL + "mintToken/#P2PK_ADDRESS#/?num=" + tokenNum.getValue()
                 + "&dec=" + tokenDecimals.getValue()
                 + "&name=" + UriUtils.encode(tokenName.getValue());
     }

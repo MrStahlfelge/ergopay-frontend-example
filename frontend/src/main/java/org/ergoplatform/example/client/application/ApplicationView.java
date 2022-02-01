@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -48,7 +48,7 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
         initWidget(uiBinder.createAndBindUi(this));
         bindSlot(ApplicationPresenter.SLOT_MAIN, container);
 
-        if (ClientModule.BACKEND_URL.contains("heroku")) {
+        if (ClientModule.ERGOPAY_URL.contains("heroku")) {
             doUselessBackendCall();
         }
     }
@@ -57,8 +57,7 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
         // Heroku hibernates our backend regularly and needs longer to come up than wallet apps
         // time out. So we do a little trick here: we just wake the backend up with a useless call
         // when someone opens this page
-        RequestBuilder builder = new RequestBuilder(RequestBuilder.GET,
-                ClientModule.BACKEND_URL.replace("ergopay:", "https:"));
+        RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, ClientModule.BACKEND_URL);
 
         try {
             builder.sendRequest(null, new RequestCallback() {

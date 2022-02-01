@@ -28,7 +28,8 @@ import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import com.gwtplatform.mvp.client.gin.DefaultModule;
 
 public class ClientModule extends AbstractPresenterModule {
-    public static final String BACKEND_URL = "ergopay://ergopay-example.herokuapp.com/";
+    public static final String ERGOPAY_URL = "ergopay://ergopay-example.herokuapp.com/";
+    public static final String BACKEND_URL = "https://ergopay-example.herokuapp.com/";
 
     @Override
     protected void configure() {
