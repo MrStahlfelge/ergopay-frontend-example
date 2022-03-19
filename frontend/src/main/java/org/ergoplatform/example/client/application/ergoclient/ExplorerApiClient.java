@@ -1,5 +1,6 @@
 package org.ergoplatform.example.client.application.ergoclient;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
@@ -8,6 +9,7 @@ import com.google.gwt.http.client.Response;
 import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
+import com.google.gwt.json.client.JSONString;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -51,13 +53,15 @@ public class ExplorerApiClient {
                 JSONObject jsonToken = tokens.get(i).isObject();
                 token.amount = jsonToken.get("amount").isNumber().doubleValue();
                 token.id = jsonToken.get("tokenId").isString().stringValue();
-                token.name = jsonToken.get("name").isString().stringValue();
+                JSONString name = jsonToken.get("name").isString();
+                token.name = name != null ? name.stringValue() : "";
 
                 retVal.add(token);
             }
 
             return retVal;
         } catch (Throwable t) {
+            GWT.log(t.getMessage());
             return null;
         }
 
